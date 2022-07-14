@@ -20,7 +20,7 @@ public final class UnderlineStyle: EntryViewStyle {
     
     private var _lineColor: UIColor
     
-    private var _selectedLineColor: UIColor
+    private var _selectedLineColor: UIColor?
     
     private var _lineWidth: CGFloat
     
@@ -33,7 +33,7 @@ public final class UnderlineStyle: EntryViewStyle {
         textColor: UIColor = .black,
         errorTextColor: UIColor = .red,
         lineColor: UIColor = UIColor(white: 0.9, alpha: 1),
-        selectedLineColor: UIColor = .lightGray,
+        selectedLineColor: UIColor? = nil,
         lineWidth: CGFloat = 1,
         errorLineColor: UIColor = .red,
         emptyLineColor: UIColor? = nil) {
@@ -66,7 +66,8 @@ public final class UnderlineStyle: EntryViewStyle {
     
     public func onUpdateSelectedState(_ label: VKLabel) {
         
-        if label.isSelected {
+        if label.isSelected,
+           let _selectedLineColor = _selectedLineColor {
 
             _line.strokeColor = _selectedLineColor.cgColor
 

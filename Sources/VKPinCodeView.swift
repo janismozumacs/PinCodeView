@@ -257,7 +257,11 @@ public final class VKPinCodeView: UIView {
     private func createLabels() {
         
         _stack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        for _ in 1 ... length { _stack.addArrangedSubview(VKLabel(onSettingStyle?())) }
+        for _ in 1 ... length {
+            let label = VKLabel(onSettingStyle?())
+            label.animateWhileSelected = animateSelectedInputItem
+            _stack.addArrangedSubview(label)
+        }
     }
     
     private func updateErrorState() {
