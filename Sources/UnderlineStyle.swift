@@ -66,6 +66,10 @@ public final class UnderlineStyle: EntryViewStyle {
     
     public func onUpdateSelectedState(_ label: VKLabel) {
         
+        if _selectedLineColor == nil {
+            return
+        }
+        
         if label.isSelected,
            let _selectedLineColor = _selectedLineColor {
 
